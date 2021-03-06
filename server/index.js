@@ -1,10 +1,14 @@
 const express = require('express');
 const config = require('config');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 const app = express();
 
-const PORT = config.get('port');
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
+app.use('/api/auth', require('./routes/auth.route'));
 
 
 const connect = async () => {
@@ -14,8 +18,8 @@ const connect = async () => {
 			useUnifiedTopology: true,
 			useNewUrlParser: true
 		});
-		app.listen(PORT, () => {
-			console.log(`Server started on port: ${PORT} and have been successfully connected to the DB`)
+		app.listen(config.get('port'), () => {
+			console.log(`Server started on port: ${config.get('port')} and have been successfully connected to the DB`)
 		});
 	} catch (e) {
 		console.log(e.message);
