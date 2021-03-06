@@ -1,0 +1,5 @@
+{
+  "port": 5000,
+  "mongo_db_connection_string": "mongodb+srv://test:qwerty123@cluster0.f2knn.mongodb.net/todoAppDB?retryWrites=true&w=majority",
+  "secret_jwt": "Qwerty_123"
+}
