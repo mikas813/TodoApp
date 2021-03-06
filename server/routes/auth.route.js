@@ -7,11 +7,13 @@ const router = Router();
 router.post('/register', async (req, res) => {
 	try {
 
+		// todo: Validate input data of email and password
+
 		const {email, password} = req.body;
 
-		const userExists = await User.find({email});
+		const userExists = await User.findOne({email});
 
-		if (!userExists) {
+		if (userExists) {
 			return res.status(400).json({message: 'User with this email already exist.'})
 		}
 
@@ -32,6 +34,21 @@ router.post('/register', async (req, res) => {
 // /api/auth/login
 router.post('/login', async (req, res) => {
 
+	const {email, password} = req.body;
+
+	const user = await User.findOne({email});
+
+	if (!user) {
+		return res.status(400).json({message: 'Wrong email.'})
+	}
+
+	const passwordMatch = bcrypt.compareSync(password, user.password);
+
+	if (!passwordMatch) {
+		return res.status(400).send({message: 'Wrong password.'})
+	}
+
+	res.status(201).send({message: 'Logged in successfully'})
 });
 
 module.exports = router;
