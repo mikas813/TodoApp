@@ -4,7 +4,7 @@
   "description": "This app have couple endpoints for user registration, user authoriation and all needed manipulation with database to manage application state",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,13 @@
   "bugs": {
     "url": "https://github.com/mikas813/EDirectInsure_Todo_list/issues"
   },
-  "homepage": "https://github.com/mikas813/EDirectInsure_Todo_list#readme"
+  "homepage": "https://github.com/mikas813/EDirectInsure_Todo_list#readme",
+  "dependencies": {
+    "config": "^3.3.4",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.19"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
 }
