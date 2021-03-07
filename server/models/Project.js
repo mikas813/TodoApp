@@ -8,11 +8,12 @@ const todoSchema = new mongoose.Schema({
 		maxLength: 200,
 	},
 	author: {
-		type: String,
+		type: mongoose.ObjectId, ref: 'User',
 		minLength: 3,
 		maxLength: 30
 	},
 	userId: String,
+	todoList: [{type: mongoose.ObjectId, ref: 'TodoLis'}]
 });
 
 // this Todo is a class
