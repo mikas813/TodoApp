@@ -11,7 +11,7 @@ const schema = new Schema({
 		required: true,
 		minLength: 6
 	},
-	todoList: [
+	projects: [
 		{
 			type: String,
 			ref: 'Todo'

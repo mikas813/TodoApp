@@ -4,7 +4,7 @@ import {Projects} from "../pages/Projects";
 import {CreateProject} from "../pages/CreateProject";
 import {TodoList} from "../pages/TodoList";
 import {TodoDetail} from "../pages/TodoDetails";
-import {Auth} from "../pages/Auth";
+import Auth from "../pages/Auth";
 import {CreateTodo} from "../pages/CreateTodo";
 
 export const useRoutes = isAuth => {
