@@ -16,7 +16,6 @@ const todoSchema = new mongoose.Schema({
 	todoList: [{type: mongoose.ObjectId, ref: 'TodoLis'}]
 });
 
-// this Todo is a class
 const Project = mongoose.model('Project', todoSchema);//need destruct
 
 module.exports = Project;

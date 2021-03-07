@@ -11,8 +11,7 @@ app.use(cors());
 
 app.use('/api/auth', require('./routes/auth.route'));
 app.use('/api/projects', require('./routes/project.route'));
-
-
+app.use('/api/todo', require('./routes/todo.route'));
 
 const connect = async () => {
 	try {
