@@ -5,7 +5,7 @@ import {AuthContext} from "../context/authContext";
 const Header = () => {
 	const auth = useContext(AuthContext);
 
-	const hanldleLogout = () => {
+	const handleLogout = () => {
 		auth.logout();
 	};
 
@@ -22,7 +22,7 @@ const Header = () => {
 						<Link to='/create-project'>Create Project</Link>
 					</li>
 					<li>
-						<a href='#' onClick={hanldleLogout}>Log Out</a>
+						<a href='#' onClick={handleLogout}>Log Out</a>
 					</li>
 				</ul>
 

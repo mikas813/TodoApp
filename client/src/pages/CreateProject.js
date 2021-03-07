@@ -24,11 +24,11 @@ export const CreateProject = () => {
 
 	const createHandler = async () => {
 		try {
-			await request('/api/projects', 'POST', {projectName: project, userId: auth.userId}, {
+			const data = await request('/api/projects', 'POST', {projectName: project, userId: auth.userId}, {
 				Authorization: `Bearer ${auth.token}`
 			});
 
-			history.push('/projects');
+			history.push(`/projects/${data._id}`);
 		} catch (e) {
 		}
 	};

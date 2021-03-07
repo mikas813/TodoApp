@@ -36,7 +36,6 @@ export const Projects = () => {
 			}
 		};
 
-
 		if (loading) {
 			return <Loader/>;
 		}
