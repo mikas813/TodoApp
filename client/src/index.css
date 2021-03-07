@@ -52,8 +52,7 @@ input:focus{
 input:focus + label{
     transform: translateY(-14px) scale(.8);
 }
-input::-webkit-input-placeholder,
-input::-moz-input-placeholder{
+input::-webkit-input-placeholder {
     color: transparent;
 }
 input::placeholder{

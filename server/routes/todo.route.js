@@ -2,9 +2,21 @@ const Todo = require('../models/Todo');
 const express = require('express');
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get('/:_id', async (req, res) => {
+	// req.params._id
 	try {
-		const todo = await Todo.find();
+		const todo = await Todo.find({projectId: req.params._id});
+		res.send(todo)
+	} catch (error) {
+		res.status(500).send(error.message);
+		console.log(error.message);
+	}
+});
+
+router.put('/:_id', async (req, res) => {
+	const {_id} = req.params;
+	try {
+		const todo = await Todo.findByIdAndUpdate({_id}, {isCompleted: true});
 		res.send(todo)
 	} catch (error) {
 		res.status(500).send(error.message);
@@ -25,7 +37,7 @@ router.post('/', async (req, res) => {
 		todo = await todo.save();
 		res.send(todo)
 	} catch (error) {
-		res.status(500).json({message: error.message});
+		res.status(500).json({message: "Todo's name is required."});
 		console.log(error.message);
 	}
 });

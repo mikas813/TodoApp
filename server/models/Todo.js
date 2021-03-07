@@ -12,6 +12,7 @@ const todoSchema = new mongoose.Schema({
 		minLength: 3,
 		maxLength: 200
 	},
+	isCompleted: {type: Boolean, default: false},
 	startDate: {type: Date, default: new Date()},
 	finishDate: {type: Date}
 });

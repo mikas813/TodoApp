@@ -11,11 +11,11 @@ export const useRoutes = isAuth => {
 		return (
 			<Switch>
 
-				<Route path='/create-project'>
+				<Route path='/create-project/'>
 					<CreateProject/>
 				</Route>
 
-				<Route path='/' exact>
+				<Route path={'/'} exact>
 					<Projects/>
 				</Route>
 

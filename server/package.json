@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "This app have couple endpoints for user registration, user authoriation and all needed manipulation with database to manage application state",
+  "description": "This app have couple endpoints for user registration, user authorisation and all needed manipulation with database to manage application state",
   "main": "index.js",
   "scripts": {
     "server": "nodemon index.js"

@@ -1,8 +1,8 @@
 import React, {useContext, useState, useEffect} from 'react';
 import {useHttp} from "../hooks/httpHook";
 import {AuthContext} from "../context/authContext";
-import {useHistory} from 'react-router-dom';
 import {useMessage} from "../hooks/message.hook";
+import {useHistory} from 'react-router-dom';
 
 export const CreateProject = () => {
 
@@ -11,7 +11,6 @@ export const CreateProject = () => {
 	const {request, clearError, error} = useHttp();
 	const [project, setProject] = useState('');
 	const message = useMessage();
-
 
 	useEffect(() => {
 		message(error);
@@ -22,13 +21,13 @@ export const CreateProject = () => {
 		window.M.updateTextFields();
 	}, []);
 
-	const createHandler = async () => {
+	const createHandler = async (e) => {
+		e.preventDefault();
 		try {
-			const data = await request('/api/projects', 'POST', {projectName: project, userId: auth.userId}, {
+			await request('/api/projects', 'POST', {projectName: project, userId: auth.userId}, {
 				Authorization: `Bearer ${auth.token}`
 			});
-
-			history.push(`/projects/${data._id}`);
+			history.push('/')
 		} catch (e) {
 		}
 	};
@@ -49,11 +48,11 @@ export const CreateProject = () => {
 				</div>
 
 				<div className="input-field col s12">
-					<a
+					<button
 						onClick={createHandler}
 						className="btn-floating btn-large waves-effect waves-light red">
 						<i className="material-icons">+</i>
-					</a>
+					</button>
 
 				</div>
 			</form>
