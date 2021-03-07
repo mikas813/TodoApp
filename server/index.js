@@ -10,6 +10,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use('/api/auth', require('./routes/auth.route'));
+app.use('/api/projects', require('./routes/project.route'));
+
 
 
 const connect = async () => {
