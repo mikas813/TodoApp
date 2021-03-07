@@ -16,11 +16,9 @@ const Auth = () => {
 
 	const changeHandler = event => {
 		setForm({...form, [event.target.name]: event.target.value});
-		console.log('', form );
 	};
 
 	useEffect(() => {
-		console.log(error);
 		message(error);
 		clearError();
 	}, [error, message, clearError]);
