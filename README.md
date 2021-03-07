@@ -1,6 +1,6 @@
 # To run server open '/server' folder in terminal and run 'npm install' when all dependecies will be installed run the server with 'npm run server' command
 # To run client open '/client' folder in the terminal and run 'npm install' when all dependecies will be installed run the front end with 'npm start' command
-# Data base connect string is located in defaul.json so you dont need to create env variables.
+# Data base connect string with all configs is located in 'defaul.json' so you dont need to create env variables.
 
 # EDirectInsure_Todo_list
 Code Challenge
