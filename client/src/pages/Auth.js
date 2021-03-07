@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import {login, register} from "../redux/actions/userAction";
@@ -14,20 +13,15 @@ const Auth = (props) => {
 	const {loading, userInfo, error} = userSignUp;
 	const dispatch = useDispatch();
 
-
-
-	const submitHandler = async (e) => {
+	const submitHandler = async (e, type) => {
 		e.preventDefault();
-
-		dispatch(register(email, password));
-		await axios.post('/api/auth/register', {email, password});
+		dispatch(type(email, password));
 	};
-
 
 	return (
 		<div className="form-container card deep-orange lighten-5 ">
 			<h4>Todo App</h4>
-			<form onSubmit={(e) => submitHandler(e)}>
+			<form >
 				{error && <div className="red-text">Invalid email or password</div>}
 				<div className="filds">
 					<input
@@ -49,14 +43,18 @@ const Auth = (props) => {
 					<label htmlFor="password">Password</label>
 				</div>
 				<div className="input-field col s12">
-					<button className="btn waves-effect waves-light" type="submit" name="action">
+					<button
+						onClick={(e) => submitHandler(e, login)}
+						className="btn waves-effect waves-light" type="submit" name="action">
 						{
 							loading
 								? 'Login...'
 								: 'Login'
 						}
 					</button>
-					<button className="btn waves-effect waves-light" type="submit" name="action">
+					<button
+						onClick={(e) => submitHandler(e, register)}
+						className="btn waves-effect waves-light" type="submit" name="action">
 						{
 							loading
 								? 'Register...'
