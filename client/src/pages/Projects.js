@@ -1,5 +1,4 @@
 import React, {useCallback, useContext, useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
 import {AuthContext} from "../context/authContext";
 import {useHttp} from "../hooks/httpHook";
 import {Loader} from "../components/Loader";
@@ -10,8 +9,7 @@ export const Projects = () => {
 
 		const {token} = useContext(AuthContext);
 		const {request, loading} = useHttp();
-		const [projects, setProjects] = useState(null);
-		const projectId = useParams().id;
+		const [projects, setProjects] = useState([]);
 
 		const getProjects = useCallback(async () => {
 			try {
@@ -22,12 +20,21 @@ export const Projects = () => {
 
 			} catch (e) {
 			}
-		}, [token, projectId, request]);
-
+		}, [token, request]);
 
 		useEffect(() => {
 			getProjects();
 		}, [getProjects]);
+
+		const removeProject = async (projectId) => {
+			try {
+				await request(`/api/projects/${projectId}`, 'DELETE', null, {
+					Authorization: `Bearer ${token}`
+				});
+
+			} catch (e) {
+			}
+		};
 
 
 		if (loading) {
@@ -36,7 +43,7 @@ export const Projects = () => {
 
 		return (
 			<>
-				{!loading && projects && <ProjectCard project={projects}/>}
+				{!loading && projects && <ProjectCard project={projects} handleRemove={removeProject}/>}
 			</>
 		);
 	}

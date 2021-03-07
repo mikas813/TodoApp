@@ -5,7 +5,6 @@ import {CreateProject} from "../pages/CreateProject";
 import {TodoList} from "../pages/TodoList";
 import {TodoDetail} from "../pages/TodoDetails";
 import Auth from "../pages/Auth";
-import {CreateTodo} from "../pages/CreateTodo";
 
 export const useRoutes = isAuth => {
 
@@ -19,10 +18,6 @@ export const useRoutes = isAuth => {
 
 				<Route path='/' exact>
 					<Projects/>
-				</Route>
-
-				<Route path='/create-todo'>
-					<CreateTodo/>
 				</Route>
 
 				<Route path='/todo-list'>

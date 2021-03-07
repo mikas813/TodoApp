@@ -2,13 +2,21 @@ import React, {useContext, useState, useEffect} from 'react';
 import {useHttp} from "../hooks/httpHook";
 import {AuthContext} from "../context/authContext";
 import {useHistory} from 'react-router-dom';
+import {useMessage} from "../hooks/message.hook";
 
 export const CreateProject = () => {
 
 	const history = useHistory();
 	const auth = useContext(AuthContext);
-	const {request} = useHttp();
+	const {request, clearError, error} = useHttp();
 	const [project, setProject] = useState('');
+	const message = useMessage();
+
+
+	useEffect(() => {
+		message(error);
+		clearError();
+	}, [error, message, clearError]);
 
 	useEffect(() => {
 		window.M.updateTextFields();
@@ -16,7 +24,7 @@ export const CreateProject = () => {
 
 	const createHandler = async () => {
 		try {
-			const data = await request('/api/projects', 'POST', {projectName: project, userId: auth.userId}, {
+			await request('/api/projects', 'POST', {projectName: project, userId: auth.userId}, {
 				Authorization: `Bearer ${auth.token}`
 			});
 

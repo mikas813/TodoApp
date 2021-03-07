@@ -38,7 +38,7 @@ router.post('/register',
 			res.status(201).send({message: 'Account created.'})
 
 		} catch (e) {
-			res.status(500).json({message: 'Something went wrong, please try again!' + e.message});
+			res.status(500).json({message: `Something went wrong, please try again! ${e.message}`});
 			console.log(e.message);
 		}
 	});

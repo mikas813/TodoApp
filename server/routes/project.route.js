@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
 		project = await project.save();
 		res.send(project)
 	} catch (error) {
-		res.status(500).send(error.message);
+		res.status(500).json({message: 'Something went wrong, please try again!'});
 		console.log(error.message);
 	}
 });
