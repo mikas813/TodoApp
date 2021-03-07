@@ -10,13 +10,7 @@ const schema = new Schema({
 		type: String,
 		required: true,
 		minLength: 6
-	},
-	todoList: [
-		{
-			type: String,
-			ref: 'Todo'
-		}
-	]
+	}
 });
 
 module.exports = model('User', schema);

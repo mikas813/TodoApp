@@ -2,13 +2,16 @@ const express = require('express');
 const config = require('config');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-
+const cors = require('cors');
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+app.use(cors());
 
 app.use('/api/auth', require('./routes/auth.route'));
+app.use('/api/projects', require('./routes/project.route'));
+
 
 
 const connect = async () => {
