@@ -54,11 +54,11 @@ const Auth = () => {
 						name='email'
 						type="text"
 						id="firstName"
-						placeholder="Firt Name"
+						placeholder="Email"
 						value={form.email}
 						onChange={changeHandler}
 					/>
-					<label htmlFor="firstName">First Name</label>
+					<label htmlFor="firstName">Email</label>
 				</div>
 				<div className="filds">
 					<input
